@@ -55,7 +55,8 @@ If these variables are not specified it will default to getting and packaging th
 
 There are some things to be aware of:
 
-* The tool does not currently verify the crypographic signatues provided by hahicorp
+* The tool does not currently verify the cryptographic signatues provided by hahicorp
+* Resulting package unverifyable 
 * Due to the format of the changelog being different to what the rpm builder tool expects so is not included in the package build.
 * The Docker image includes some tools that are not used right now leading to a larger image ( vim, repo building tools etc )
 
