@@ -2,17 +2,19 @@
 
 Downloads a hashicorp tool and creates packages for installation via yum or apt
 
-**Please note**: This tool is _not_ created, supported and/or endorsed by Hashicorp. Use at your own risk etc
+**Please note**: This tool is _not_ created, supported and/or endorsed by Hashicorp. Use at your own risk etc. 
 
 
 ### Why
 
-Hashicorp distribute their tools in .zip files. This is a no nonsense way to get the software out in to the world quickly.
+Hashicorp distribute their tools in .zip files which need extracting and
+putting in to the correct place to run.
 
-However this can be an faf when updates are realeased and existing systems need
+This can be a bit of faf when updates are released and existing systems need
 to be updated.
 
-Plugging the tools in to a users package manager can help keep things up to date and ensure an consistent installation environment.
+Plugging the tools in to a users package manager can help keep things up to
+date and ensure an consistent installation environment.
 
 
 
@@ -55,8 +57,8 @@ If these variables are not specified it will default to getting and packaging th
 
 There are some things to be aware of:
 
-* The tool does not currently verify the cryptographic signatues provided by hahicorp
-* Resulting package unverifyable 
-* Due to the format of the changelog being different to what the rpm builder tool expects so is not included in the package build.
-* The Docker image includes some tools that are not used right now leading to a larger image ( vim, repo building tools etc )
+* Due to the format of the changelog being different to what the RPM builder
+  tool expects so is not included in the RPM package.
+* The Docker image is probably a little larger than it should be due to the
+  repo building tools that aren't currently used
 

@@ -1,6 +1,6 @@
 SHELL = /bin/bash
 
-.PHONY: get build-rpm build-deb build-repo-yum build-repo-deb
+.PHONY: help build go
 
 .DEFAULT_GOAL = help
 
@@ -21,5 +21,5 @@ output:
 go: ## - Go get the tool. Specify "TOOL=" and/or "VERSION=" to override defaults
 	@echo "[i] Getting ${TOOL}"
 	@${MAKE} output
-	@docker run -it --rm -e H_TOOL="${TOOL}" -e H_VERSION="${VERSION}" -v ${PWD}/output:/output mcrmonkey/hashi-pkg
+	@docker run -it --rm -e TOOL="${TOOL}" -e VERSION="${VERSION}" -v ${PWD}/output:/output mcrmonkey/hashi-pkg
 

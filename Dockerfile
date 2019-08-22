@@ -1,9 +1,9 @@
-FROM debian:latest
+FROM debian:stretch
 LABEL maintainer "ant <git@manchestermonkey.co.uk>"
 
 RUN apt-get update -qq && \
     apt-get upgrade -qq && \
-	apt-get install -qq vim wget curl ruby ruby-dev build-essential reprepro wget curl vim rpm
+	apt-get install -qq ruby ruby-dev build-essential reprepro wget curl rpm
 
 RUN gem install fpm
 
