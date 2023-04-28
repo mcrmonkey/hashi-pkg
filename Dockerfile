@@ -1,4 +1,4 @@
-FROM debian:stretch
+FROM debian:bullseye
 LABEL maintainer "ant <git@manchestermonkey.co.uk>"
 
 RUN apt-get update -qq && \

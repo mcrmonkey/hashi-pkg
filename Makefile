@@ -1,16 +1,17 @@
 SHELL = /bin/bash
 
-.PHONY: help build go
+.PHONY: help container package
 
 .DEFAULT_GOAL = help
 
 TOOL := "terraform"
 
 help:
-	@echo "You'll need to specify a thing to do:"
-	@egrep '^(.+)\:\ ##\ (.+)' ${MAKEFILE_LIST} | column -t -c 2 -s ':#'
+	@echo -e "\nYou'll need to specify a thing to do:\n"
+	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z_-\/]+:.*?## / {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
+	@echo -e "\nSpecify "TOOL=" and/or "VERSION=" to override defaults\n"
 
-build: ## - Build Docker image
+container: ## - Build Docker image to fetch and create packages
 	@echo "[i] Building docker image"
 	@docker build -t mcrmonkey/hashi-pkg .
 
@@ -18,7 +19,7 @@ output:
 	@echo "[i] Creating output directory"
 	@mkdir output
 
-go: ## - Go get the tool. Specify "TOOL=" and/or "VERSION=" to override defaults
+package: ## - Download the tool and create a package
 	@echo "[i] Getting ${TOOL}"
 	@${MAKE} output
 	@docker run -it --rm -e TOOL="${TOOL}" -e VERSION="${VERSION}" -v ${PWD}/output:/output mcrmonkey/hashi-pkg

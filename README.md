@@ -27,25 +27,25 @@ To avoid adding extra junk to your system this makes use of a docker container w
 To build the image run the following on your system:
 
 ```shell
-make build
+make container
 ```
 
 To get the latest terraform and turn it in to a package run the following:
 
 ```shell
-make go
+make package
 ```
 
 To get an older version of terraform specify the version, like so:
 
 ```shell
-make VERSION="0.7.4" go
+make VERSION="0.7.4" package
 ```
 
 To specify an alternate tool specify the tool name, like so:
 
 ```shell
-make TOOL="packer" go
+make TOOL="packer" package
 ```
 
 The `TOOL` and `VERSION` can be specified together to get specific versions of tools.
@@ -58,7 +58,7 @@ If these variables are not specified it will default to getting and packaging th
 There are some things to be aware of:
 
 * Due to the format of the changelog being different to what the RPM builder
-  tool expects so is not included in the RPM package.
+  tool expects the change log is not included in the RPM package.
 * The Docker image is probably a little larger than it should be due to the
-  repo building tools that aren't currently used
+  repo building tools that are included but aren't currently used
 
